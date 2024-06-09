@@ -1,12 +1,12 @@
-name: Run nanoCLR
+name: Run nanoCLR on 2022
 
 on:
   workflow_dispatch:
 
 jobs:
   run-nanoclr:
-    name: Run nanoCLR
-    runs-on: windows-2019
+    name: Run nanoCLR on 2022
+    runs-on: windows-2022
 
     steps:
       - name: Setup dotnet

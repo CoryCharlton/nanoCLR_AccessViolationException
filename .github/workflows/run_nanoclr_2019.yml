@@ -1,0 +1,24 @@
+name: Run nanoCLR on 2019
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-nanoclr:
+    name: Run nanoCLR on 2019
+    runs-on: windows-2019
+
+    steps:
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Install nanoCLR
+        run: dotnet tool install nanoclr -g
+
+      - name: Get nanoCLR version
+        run: nanoclr version
+
+      - name: nanoCLR run
+        run: nanoclr run

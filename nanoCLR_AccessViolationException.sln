@@ -5,8 +5,10 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Actions", "GitHub Actions", "{EC4BE7DE-4448-478D-8A37-1AC316D2E9E5}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\run_nanoclr.yml = .github\workflows\run_nanoclr.yml
+		.github\workflows\build_2022.yml = .github\workflows\build_2022.yml
+		.github\workflows\run_nanoclr_2019.yml = .github\workflows\run_nanoclr_2019.yml
+		.github\workflows\build_2019.yml = .github\workflows\build_2019.yml
+		.github\workflows\run_nanoclr_2022.yml = .github\workflows\run_nanoclr_2022.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{092C6974-82DA-44B8-AFF8-B5C1B2834A97}"
