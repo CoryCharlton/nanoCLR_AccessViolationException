@@ -1,0 +1,57 @@
+name: Build and execute
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+
+jobs:
+  build-and-execute:
+    name: Build and execute
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Setup nanoFramework
+        uses: nanoframework/nanobuild@v1
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x64
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2
+
+      - name: Install dependencies
+        run: nuget restore nanoCLR_AccessViolationException.sln
+
+      - name: Build solution
+        run: msbuild nanoCLR_AccessViolationException.sln /p:Configuration=Release
+
+      - name: Install nanoCLR
+        run: dotnet tool install nanoclr -g
+
+      - name: Get nanoCLR version
+        run: nanoclr version
+
+      - name: nanoCLR run
+        run: nanoclr run --assemblies "./NFApp1/bin/Release/mscorlib.pe" "./NFApp1/bin/Release/NFApp1.pe" 
