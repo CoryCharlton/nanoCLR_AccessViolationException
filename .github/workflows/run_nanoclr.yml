@@ -6,7 +6,7 @@ on:
 jobs:
   run-nanoclr:
     name: Run nanoCLR
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
       - name: Setup dotnet
